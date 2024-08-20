@@ -1,0 +1,40 @@
+<div class="login">
+    <mat-card class="card">
+        <mat-card-header class="card-header">
+            <h1>INICIAR SESIÓN</h1>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="loginForm">
+                <mat-form-field appearance="outline" class="cajones">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput>
+                    <mat-error>Este campo es requerido</mat-error>
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="cajones">
+                    <mat-label>Contraseña</mat-label>
+                    <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'">
+                    <mat-error>Este campo es requerido</mat-error>
+                    <button mat-icon-button matSuffix (click)="esconder($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                        <mat-icon matSuffix>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="cajones">
+                    <mat-label>Rol</mat-label>
+                    <mat-error>Este campo es requerido</mat-error>
+                    <mat-select formControlName="rol">
+                        <mat-option value="ADMIN">ADMINISTRADOR</mat-option>
+                        <mat-option value="USER">USUARIO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button type="submit" (click)="onSubmit()" class="cajones" routerLink="/dashboard/inicio" mat-flat-button>
+                    Iniciar Sesión
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

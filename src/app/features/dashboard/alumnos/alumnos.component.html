@@ -1,0 +1,40 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> NOMBRE COMPLETO </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="finishedCourses">
+      <th mat-header-cell *matHeaderCellDef> CURSOS FINALIZADOS </th>
+      <td mat-cell *matCellDef="let element"> {{element.finishedCourses}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="studying">
+      <th mat-header-cell *matHeaderCellDef> CURSANDO </th>
+      <td mat-cell *matCellDef="let element"> {{element.studying}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> - </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-icon-button>
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<button mat-flat-button>
+    <mat-icon>add</mat-icon>Agregar alumno
+</button>

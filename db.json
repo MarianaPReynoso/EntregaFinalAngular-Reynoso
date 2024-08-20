@@ -1,0 +1,17 @@
+{
+    "users": [
+        {
+            "email": "estoesun@email.com",
+            "password": "123456",
+            "rol": "USUARIO" 
+        }
+    ],
+
+    "courses": [
+        {
+            "id": "DJHN",
+            "nombre": "Angular",
+            "price": "55454"
+        }
+    ]
+}

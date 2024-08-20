@@ -1,0 +1,45 @@
+<mat-drawer-container class="example-container bg-color " autosize>
+
+    <mat-drawer #drawer class="example-sidenav bg-color" mode="side">
+        <mat-nav-list>
+            <a mat-list-item
+            routerLink="inicio"
+            routerLinkActive
+            #inicioLink="routerLinkActive"
+            [activated]="inicioLink.isActive">Inicio</a>
+
+            <a mat-list-item
+            routerLink="cursos"
+            routerLinkActive
+            #cursosLink="routerLinkActive"
+            [activated]="cursosLink.isActive">Cursos</a>
+            
+            <a mat-list-item
+            routerLink="alumnos"
+            routerLinkActive
+            #alumnosLink="routerLinkActive"
+            [activated]="alumnosLink.isActive">Alumnos</a>
+            
+            <a mat-list-item
+            routerLink="inscripciones"
+            routerLinkActive
+            #inscripcionesLink="routerLinkActive"
+            [activated]="inscripcionesLink.isActive">Inscripciones</a>
+
+            <a mat-list-item routerLink="/auth">Cerrar Sesión</a>
+        </mat-nav-list>
+    </mat-drawer>
+
+    <div class="example-sidenav-content bg-color">
+        <mat-toolbar color="primary" class="bg-color">
+            <button mat-icon-button class="example-icon color-style" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span appSize class="color-style titulo">TIQUILIS</span>
+        </mat-toolbar>
+
+        <main class="p-5 bg-color contenidoMain">
+            <router-outlet/>
+        </main>
+    </div>
+</mat-drawer-container>

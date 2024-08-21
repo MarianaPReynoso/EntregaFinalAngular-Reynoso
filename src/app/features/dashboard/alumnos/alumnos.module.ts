@@ -4,14 +4,19 @@ import { CommonModule } from '@angular/common';
 import { AlumnosRoutingModule } from './alumnos-routing.module';
 import { AlumnosComponent } from './alumnos.component';
 import { SharedModule } from '../../shared/shared.module';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
-  declarations: [AlumnosComponent],
+  declarations: [AlumnosComponent, DialogComponent],
   imports: [
     CommonModule,
     AlumnosRoutingModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule,
+    MatCheckboxModule
   ],
   exports: [AlumnosComponent]
 })

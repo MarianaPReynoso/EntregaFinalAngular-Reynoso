@@ -3,5 +3,5 @@ export interface CursosDisponibles {
     nombre: string;
     // inicio: Date;
     // fin: Date;
-    price: number
+    price: number;
 }

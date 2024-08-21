@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Students } from './models';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @Component({
   selector: 'app-alumnos',
@@ -9,6 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class AlumnosComponent { 
+  listadoAlumnos = '';
+
   displayedColumns: string[] = ['position', 'name', 'finishedCourses', 'studying', 'actions'];
   dataSource: Students[] = [
     {
@@ -42,10 +45,18 @@ export class AlumnosComponent {
       finishedCourses: 3,
       studying: '-',
     },
-
   ];
 
   constructor(private matDialog: MatDialog) {}
+
+  openDialog(): void {
+    this.matDialog.open(DialogComponent).afterClosed().subscribe({
+      next: (value) => {
+        this.listadoAlumnos = value.name;
+        this.dataSource = [...this.dataSource, value];
+        },
+    })
+  }
 
   editStudents() {
 

@@ -9,6 +9,7 @@ import { Cursos } from '../../models';
   templateUrl: './dialogo.component.html',
   styleUrl: './dialogo.component.scss'
 })
+
 export class DialogoComponent {
   courseForm: FormGroup;
 
@@ -26,18 +27,18 @@ export class DialogoComponent {
     public dialogRef: MatDialogRef<DialogoComponent>,
     @Inject (MAT_DIALOG_DATA) public editarCurso?: Estudiantes
   ) {
-    this.courseForm = this.fb.group({
-      name: [null, Validators.required],
-      lastName: [null, Validators.required],
-      curso: [Validators.required],
-      startDate: [],
-      endDate: [],
-    });
+      this.courseForm = this.fb.group({
+        name: [null, Validators.required],
+        lastName: [null, Validators.required],
+        curso: [Validators.required],
+        startDate: [],
+        endDate: [],
+      });
 
-    if(this.editarCurso) {
-      this.courseForm.patchValue(this.editarCurso);
+      if(this.editarCurso) {
+        this.courseForm.patchValue(this.editarCurso);
+      }
     }
-  }
 
   onSubmit(): void {
     if(this.courseForm.valid) {

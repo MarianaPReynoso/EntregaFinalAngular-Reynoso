@@ -5,3 +5,13 @@ export interface Students {
     finishedCourses: number;
     studying: string;
 }
+
+export interface Courses {
+    value: string;
+    viewValue: string;
+}
+
+export interface Cantidad {
+    value: number;
+    viewValue: number;
+}

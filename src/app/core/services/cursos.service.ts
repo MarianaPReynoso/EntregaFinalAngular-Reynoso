@@ -61,7 +61,6 @@ export class CursosService {
             map((todosLosCursos) => todosLosCursos.find((el) => el.id === id))
         );
     }
-    
 
     editarCursotById(id: string, update: Partial<CursosDisponibles>) {
         this.DATABASE = this.DATABASE.map((c) =>

@@ -62,7 +62,7 @@ export class CursosComponent {
     }
   ];
 
-  cursosForm!: FormGroup;
+  courseForm!: FormGroup;
   editarCurso!: CursosDisponibles;
 
   constructor(
@@ -84,7 +84,7 @@ export class CursosComponent {
 
   modificarCurso(editarCurso: CursosDisponibles) {
     this.editarCurso = editarCurso;
-    this.cursosForm.patchValue(editarCurso);
+    this.courseForm.patchValue(editarCurso);
   }
 
   borrarCurso(id: string) {

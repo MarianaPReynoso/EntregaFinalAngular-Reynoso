@@ -35,6 +35,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<button mat-flat-button>
+<button (click)="openDialog()" mat-flat-button class="addButton">
     <mat-icon>add</mat-icon>Agregar alumno
 </button>

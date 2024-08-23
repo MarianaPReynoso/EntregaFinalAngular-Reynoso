@@ -1,3 +1,16 @@
+# DATOS PARA INICIO DE SESIÓN
+ADMIN:
+email: mailparaadmin@email.com,
+password: "02468"
+
+USER:
+email: estoesun@email.com,
+password: 123456
+
+Profe, lamento mucho la baja calidad del proyecto pero se me desconfiguró el login cuando empecé a colocar los APIS y ya no pude 'ingresar' a la web, lo que hizo que todas las otras modificaciones tuviera que hacerlas a ciegas. Todo esto me pasó en los últimos días antes de la entrega, no logro encontrar el error y mi tutor no llegó a responderme a tiempo
+
+
+
 # EntregaFinal
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.

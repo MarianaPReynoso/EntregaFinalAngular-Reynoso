@@ -15,6 +15,7 @@
             [activated]="cursosLink.isActive">Cursos</a>
             
             <a mat-list-item
+            *ngIf="(authUser$ | async)?.rol === 'ADMIN'"
             routerLink="alumnos"
             routerLinkActive
             #alumnosLink="routerLinkActive"

@@ -4,9 +4,14 @@
       <td mat-cell *matCellDef="let element"> {{element.position}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> NOMBRE COMPLETO </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-header-cell *matCellDef="let element"> {{element | nombreCompleto}} </td>
     </ng-container>
 
     <ng-container matColumnDef="finishedCourses">
@@ -22,10 +27,11 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> - </th>
         <td mat-cell *matCellDef="let element"> 
-            <button mat-icon-button>
+            <button (click)="editStudents(element)" mat-icon-button>
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button>
+
+            <button (click)="deleteStudent(element.id)" mat-icon-button>
                 <mat-icon>delete</mat-icon>
             </button>
         </td>

@@ -21,14 +21,14 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   providers: [
-    AuthService,
-    {
-      provide: APP_CONFIG,
-      useValue: {
-        baseURL: '...',
-        version: '2.0',
-      },
-    },
+    // AuthService,
+    // {
+    //   provide: APP_CONFIG,
+    //   useValue: {
+    //     baseURL: '...',
+    //     version: '2.0',
+    //   },
+    // },
   ],
 })
 

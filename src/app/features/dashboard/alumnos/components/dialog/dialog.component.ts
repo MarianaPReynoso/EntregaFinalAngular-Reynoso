@@ -11,7 +11,7 @@ import { Cantidad, Courses, Students } from '../../models';
 
 export class DialogComponent {
   studentForm: FormGroup;
-  disableSelect = new FormControl(false);
+  disableSelect: FormControl;
 
   courses: Courses[] = [
     {value: 'Angular', viewValue: 'Angular'},
@@ -35,11 +35,12 @@ export class DialogComponent {
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject (MAT_DIALOG_DATA) public editarCurso?: Students
   ) {
+    this.disableSelect = new FormControl(false); 
     this.studentForm = this.fb.group({
       name: [null, Validators.required],
       lastName: [null, Validators.required],
-      finishedCourses: [],
-      studying: [Validators.required],
+      finishedCourses: [null],
+      studying: [null, Validators.required],
     });
 
     if(this.editarCurso) {
@@ -53,5 +54,9 @@ export class DialogComponent {
     } else {
 
     }
+  }
+
+  onCancel(): void {
+    this.matDialogRef.close();
   }
 }

@@ -34,7 +34,7 @@
 
         <mat-form-field appearance="outline" class="w-full formAlumnos">
             <mat-label>¿Cuántos?</mat-label>
-            <mat-select  formControlName="finishedCourses">
+            <mat-select [disabled]="disableSelect.value" formControlName="finishedCourses">
                 <mat-option value="1">1</mat-option>
                 <mat-option value="2">2</mat-option>
                 <mat-option value="3">3</mat-option>
@@ -46,6 +46,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button mat-dialog-close mat-button>Cancelar</button>
+    <button (click)="onCancel()" mat-dialog-close mat-button>Cancelar</button>
     <button (click)="onSubmit()" mat-button>Guardar</button>
 </mat-dialog-actions>

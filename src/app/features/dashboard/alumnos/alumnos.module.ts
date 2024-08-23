@@ -7,16 +7,17 @@ import { SharedModule } from '../../shared/shared.module';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MiniDialogComponent } from './components/mini-dialog/mini-dialog.component';
 
 
 @NgModule({
-  declarations: [AlumnosComponent, DialogComponent],
+  declarations: [AlumnosComponent, DialogComponent, MiniDialogComponent],
   imports: [
     CommonModule,
     AlumnosRoutingModule,
     SharedModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   exports: [AlumnosComponent]
 })

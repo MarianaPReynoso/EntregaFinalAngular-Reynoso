@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
-[x: string]: any;
+export class DashboardComponent { 
+  [x: string]: any;
   showFiller = false;
 }

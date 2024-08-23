@@ -11,7 +11,31 @@
         {
             "id": "DJHN",
             "nombre": "Angular",
-            "price": "55454"
+            "price": 15000
+        },
+
+        {
+            "id": "JAHS",
+            "nombre": "ReactJS",
+            "price": 15000
+        },
+
+        {
+            "id": "LASO",
+            "nombre": "Programación Web",
+            "price": 20000
+        },
+
+        {
+            "id": "FHNH",
+            "nombre": "Photoshop",
+            "price": 22000
+        },
+
+        {
+            "id": "ERPO",
+            "nombre": "Marketing Digital",
+            "price": 30000
         }
     ]
 }

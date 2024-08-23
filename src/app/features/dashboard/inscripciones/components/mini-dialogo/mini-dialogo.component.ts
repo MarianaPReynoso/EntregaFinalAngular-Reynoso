@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './mini-dialogo.component.html',
   styleUrl: './mini-dialogo.component.scss'
 })
+
 export class MiniDialogoComponent {
 
 }

@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 import { DetallesCursoComponent } from './cursos/pages/detalles-curso/detalles-curso.component';
-import { CursosComponent } from './cursos/cursos.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
+import { CursosComponent } from './cursos/cursos.component';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'cursos',
+    path: 'courses',
     loadChildren: () => import('./cursos/cursos.module').then((d) => d.CursosModule),
     component: CursosComponent,
   },

@@ -30,7 +30,12 @@ export class LoginComponent {
       alert('Debe completar los datos solicitados');
       return;
     } else {
-      this.authService.login(this.loginForm.value);
+      const data = {
+        email: this.loginForm.get('email')?.value,
+        password: this.loginForm.get('password')?.value,
+      }
+      // this.authService.login(this.loginForm.value);
+      this.authService.login(data);
     }
   };
 

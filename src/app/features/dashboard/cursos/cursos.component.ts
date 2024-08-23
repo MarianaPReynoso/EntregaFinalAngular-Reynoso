@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CursosDisponibles } from './models';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { CursosService } from '../../../core/services/cursos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoCursoComponent } from './components/dialogo-curso/dialogo-curso.component';
 import { generarId } from '../../shared/utils';
+import { CursosService } from '../../../core/services/cursos.service';
+
 
 
 @Component({
@@ -14,82 +14,83 @@ import { generarId } from '../../shared/utils';
 })
 
 export class CursosComponent {
-  listaCursos = '';
-  cursosDisponibles: CursosDisponibles[] = [];
-
-  // displayedColumns: string[] = ['id', 'nombre', 'inicio', 'fin', 'acciones'];
-  displayedColumns: string[] = ['id', 'nombre', 'precio', 'acciones'];
-
+  courseList = '';
+  displayedColumns: string[] = ['id', 'name', 'price', 'actions'];
   dataSource: CursosDisponibles[] = [
-    {
-      id: 'DJHN',
-      nombre: 'Angular',
-      // inicio: new Date(),
-      // fin: new Date(),
-      price: 55454
-    },
+    // {
+    //   id: 'DJHN',
+    //   nombre: 'Angular',
+    //   price: 15000,
+    // },
 
-    {
-      id: 'JAHS',
-      nombre: 'ReactJS',
-      // inicio: new Date(),
-      // fin: new Date(),
-      price: 55454
-    },
+    // {
+    //   id: 'JAHS',
+    //   nombre: 'ReactJS',
+    //   price: 15000,
+    // },
 
-    {
-      id: 'LAÑO',
-      nombre: 'Programación Web',
-      // inicio: new Date(),
-      // fin: new Date(),
-      price: 55454
-    },
+    // {
+    //   id: 'LASO',
+    //   nombre: 'Programación Web',
+    //   price: 20000,
+    // },
 
-    {
-      id: 'FHNH',
-      nombre: 'Photoshop',
-      // inicio: new Date(),
-      // fin: new Date(),
-      price: 55454
-    },
+    // {
+    //   id: 'FHNH',
+    //   nombre: 'Photoshop',
+    //   price: 22000,
+    // },
 
-    {
-      id: 'ERPO',
-      nombre: 'Marketing Digital',
-      // inicio: new Date(),
-      // fin: new Date(),
-      price: 55454
-    }
-  ];
+    // {
+    //   id: 'ERPO',
+    //   nombre: 'Marketing Digital',
+    //   price: 30000,
+    // }
+  ]
 
-  courseForm!: FormGroup;
-  editarCurso!: CursosDisponibles;
+  constructor (
+    private matDialog: MatDialog, 
+    private cursosService: CursosService
+  ) {}
 
-  constructor(
-    private fb: FormBuilder,
-    private cursosService: CursosService,
-    private MatDialog: MatDialog
-  ){}
-
-  abrirDialog(): void{
-    this.MatDialog.open(DialogoCursoComponent).afterClosed().subscribe({
+  abrirDialog(): void {
+    this.matDialog.open(DialogoCursoComponent).afterClosed().subscribe({
       next: (value) => {
-        this.listaCursos = value.name
-
+        this.courseList = value.name;
         value['id'] = generarId(4);
-        this.dataSource = [...this.dataSource, value]; 
+        this.cursosService.addCurso(value).subscribe({
+          next: (cursos) => {
+            this.dataSource = [...cursos];
+          }
+        })
+        // this.dataSource = [...this.dataSource, value];
+      },
+    });
+  }
+
+  editCurso(editarCurso: CursosDisponibles) {
+    this.matDialog.open(DialogoCursoComponent, {data: editarCurso}).afterClosed().subscribe({
+      next: (value) => {
+        if(!!value) {
+          // this.dataSource = this.dataSource.map((el) => el.id === editarCurso.id ? {...value, id:editarCurso.id} : el);
+          this.cursosService.editarCursotById(editarCurso.id, value).subscribe({
+            next: (cursos) => {
+              this.dataSource = [...cursos];
+            }
+          })
+        }
       }
-    })
+    });
   }
 
-  modificarCurso(editarCurso: CursosDisponibles) {
-    this.editarCurso = editarCurso;
-    this.courseForm.patchValue(editarCurso);
-  }
-
-  borrarCurso(id: string) {
-    if (confirm('¿Desea borrar el curso?')) {
-      this.cursosService.borrarCursoById(id);
+  deleteCurso(id: string) {
+    if(confirm('¿Desea borrar el curso?')) {
+      // this.dataSource = this.dataSource.filter((el) => el.id != id);
+      this.cursosService.borrarCursoById(id).subscribe({
+        next: (cursos) => {
+          this.dataSource = [...cursos];
+        }
+      })
     }
   }
 }

@@ -6,7 +6,7 @@
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> NOMBRE COMPLETO </th>
-      <td mat-header-cell *matCellDef="let element"> {{element | nombreCompleto}}</td>
+      <td mat-header-cell *matCellDef="let element"> {{element | nombreCompleto}} </td>
     </ng-container>
 
     <ng-container matColumnDef="curso">
@@ -47,5 +47,5 @@
 </table>  
 
 <button (click)="openDialog()" mat-flat-button class="botonAgregar">
-    <mat-icon>add</mat-icon> Inscribir alumno
+  <mat-icon>add</mat-icon> Inscribir alumno
 </button>

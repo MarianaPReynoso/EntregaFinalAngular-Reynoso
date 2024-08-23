@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
-import { APP_CONFIG } from '../../../core/injection-tokens';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { SharedModule } from '../../shared/shared.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 fdescribe('LoginComponent', () => {
   let component: LoginComponent;
@@ -17,17 +17,11 @@ fdescribe('LoginComponent', () => {
       imports: [
         MatCardModule, 
         MatDividerModule,
-        SharedModule
+        SharedModule,
       ],
       providers: [
         provideAnimationsAsync(),
-        {
-          provide: APP_CONFIG,
-          useValue: {
-            baseURL: '...',
-            version: '2.0',
-          },
-        },
+        provideHttpClient(withFetch()),
       ],
     })
     .compileComponents();
@@ -44,7 +38,7 @@ fdescribe('LoginComponent', () => {
   });
 
   it('El campo contraseña debe ser requerido', () => {
-    const contraseñaControl = component.loginForm.get('contraseña');
+    const contraseñaControl = component.loginForm.get('password');
     contraseñaControl?.setValue('');
     expect(contraseñaControl?.invalid).toBeTrue();
   });
@@ -59,12 +53,25 @@ fdescribe('LoginComponent', () => {
     const loginForm = component.loginForm;
     loginForm.setValue({
       email: '',
-      contraseña: '',
+      password: '',
       rol: '',
     });
     const spyAlert = spyOn(window, 'alert');
     component.onSubmit();
     expect(spyAlert).toHaveBeenCalled();
+  });
+
+  it('Cuando se llame a onSubmit, si el formulario es válido debe ingresar', () => {
+    const loginForm = component.loginForm;
+    loginForm.setValue({
+      email: 'fake@mail.com',
+      password: '1234560',
+      rol: 'ADMIN',
+    });
+
+    const spyOnLogin = spyOn((component as any).authService, 'login');
+    component.onSubmit();
+    expect(spyOnLogin).toHaveBeenCalled();
   });
 
   it('Si se escribe la contraseña, se tiene que poder mostrar', () => {

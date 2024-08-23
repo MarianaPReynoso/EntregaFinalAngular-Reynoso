@@ -10,22 +10,12 @@ import { environment } from '../../../environments/environment';
 })
 
 export class AuthService {
-  // private PROBAR_USUARIO: User = {
-  //   email: 'estoesun@email.com',
-  //   password: '123456',
-  //   rol: 'USUARIO'
-  // };
-
-  private VALID_TOKEN = 'sjdkhd';
+  private VALID_TOKEN = 'sjdkhddkjhfjvnfjhg';
 
   private _authUser$ = new BehaviorSubject<User | null> (null);
-
   authUser$ = this._authUser$.asObservable();
 
-  constructor(
-    private router: Router, 
-    private http: HttpClient,
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(data: {email: string; password: string}) {
     this.http.get<User[]>(environment.apiUrl + '/users', {
@@ -43,23 +33,8 @@ export class AuthService {
           this._authUser$.next(authUser);
           this.router.navigate(['dashboard', 'home']);
         }
-      },
+      }
     });
-    // let params = new HttpParams().set('email', value.email).set('password', value.password);
-    // this.http.get('http://localhost:3000/users', {params}).subscribe((data: any) => {
-    //   console.log('BBDD: ', data);
-
-    //   if(data[0].email === value.email && data[0].password === value.password) {
-        
-    //     this.router.navigate(['dashboard', 'inicio']);
-    //   } else {
-    //     alert ('Este usuario no está en la BBDD')
-    //   }
-    // })
-
-    // this.authUser$.next(this.PROBAR_USUARIO);
-    
-    
   }
 
   logout() {
@@ -71,14 +46,14 @@ export class AuthService {
   verificarToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
     if(!token) {
-      return of (false)
+      return of (false);
     }
     return this.http.get<User[]>(environment.apiUrl + '/users', {
       params: {
         token,
       },
     }).pipe(map((response) => {
-      if(!Response.length) {
+      if(!response.length) {
         return false;
       } else {
         const authUser = response[0];
@@ -86,11 +61,6 @@ export class AuthService {
         this._authUser$.next(authUser);
         return true;
       }
-    }))
-    // const isValid = this.VALID_TOKEN === token;
-    // if(isValid) {
-    //   this.authUser$.next(this.PROBAR_USUARIO)
-    // }
-    // return of(isValid);
+    }));
   }
 }

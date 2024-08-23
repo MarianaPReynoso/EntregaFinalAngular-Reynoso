@@ -5,8 +5,6 @@ import { DialogoCursoComponent } from './components/dialogo-curso/dialogo-curso.
 import { generarId } from '../../shared/utils';
 import { CursosService } from '../../../core/services/cursos.service';
 
-
-
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',

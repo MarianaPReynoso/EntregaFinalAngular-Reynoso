@@ -5,8 +5,6 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-import { AuthService } from '../../core/services/auth.service';
-import { APP_CONFIG } from '../../core/injection-tokens';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -20,16 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     MatDividerModule,
     SharedModule
   ],
-  providers: [
-    // AuthService,
-    // {
-    //   provide: APP_CONFIG,
-    //   useValue: {
-    //     baseURL: '...',
-    //     version: '2.0',
-    //   },
-    // },
-  ],
+  providers: [],
 })
 
 export class AuthModule { }

@@ -1,8 +1,22 @@
 {
     "users": [
         {
+            "id": "A382",
+            "firstName": "Helena",
+            "lastName": "Costas",
+            "email": "mailparaadmin@email.com",
+            "password": "02468",
+            "token": "sjhgd15",
+            "rol": "ADMIN"
+        },
+
+        {
+            "id": "B382",
+            "firstName": "Tamara",
+            "lastName": "Arevalos",
             "email": "estoesun@email.com",
             "password": "123456",
+            "token": "ejtus87",
             "rol": "USUARIO" 
         }
     ],

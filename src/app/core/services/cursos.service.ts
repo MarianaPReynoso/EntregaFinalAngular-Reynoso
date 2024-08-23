@@ -42,18 +42,18 @@ export class CursosService {
         }
     ];
 
-    // constructor(private httpClient: HttpClient) {}
-    constructor () {}
+    constructor(private httpClient: HttpClient) {}
+    // constructor () {}
 
     obtenerCursos(): Observable<CursosDisponibles[]> {
-        return new Observable((observer) => {
-            setTimeout(() => {
-                observer.next(this.DATABASE);
-                observer.complete();
-            }, 400)
+        // return new Observable((observer) => {
+        //     setTimeout(() => {
+        //         observer.next(this.DATABASE);
+        //         observer.complete();
+        //     }, 400)
             
-        });
-        // return this.httpClient.get<CursosDisponibles[]>(environment.apiUrl + '/courses')
+        // });
+        return this.httpClient.get<CursosDisponibles[]>(environment.apiUrl + '/courses')
     }
 
     obtenerCursoById(id: string): Observable<CursosDisponibles | undefined> {

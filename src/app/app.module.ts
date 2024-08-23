@@ -6,11 +6,16 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [provideAnimationsAsync(), provideNativeDateAdapter(), provideHttpClient(withFetch())],
+  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  providers: [
+    provideAnimationsAsync(), 
+    provideNativeDateAdapter(), 
+    provideHttpClient(withFetch())
+  ],
   bootstrap: [AppComponent]
 })
 

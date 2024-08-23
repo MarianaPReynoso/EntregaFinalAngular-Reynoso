@@ -1,6 +1,5 @@
 import { Component, signal, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { APP_CONFIG } from '../../../core/injection-tokens';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -16,7 +15,6 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder, 
     private authService: AuthService,
-    @Inject (APP_CONFIG) private appConfig: any
   ) {
     this.loginForm = this.fb.group({
       email: [null, Validators.required, Validators.email],
@@ -25,7 +23,7 @@ export class LoginComponent {
     });
   }
 
-  onSubmit(): void {
+  onSubmit() {
     if(this.loginForm.invalid) {
       alert('Debe completar los datos solicitados');
       return;
@@ -34,7 +32,6 @@ export class LoginComponent {
         email: this.loginForm.get('email')?.value,
         password: this.loginForm.get('password')?.value,
       }
-      // this.authService.login(this.loginForm.value);
       this.authService.login(data);
     }
   };

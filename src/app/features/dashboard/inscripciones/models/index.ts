@@ -4,8 +4,8 @@ export interface Estudiantes {
     lastName: string;
     curso: string;
     clase: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
 }
 
 export interface Cursos {

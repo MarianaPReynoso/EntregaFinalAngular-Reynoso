@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogoComponent } from './components/dialogo/dialogo.component';
 import { generarClase, generarId } from '../../shared/utils';
 import { MiniDialogoComponent } from './components/mini-dialogo/mini-dialogo.component';
+import { InscripcionesService } from '../../../core/services/inscrpciones.service';
 
 @Component({
   selector: 'app-inscripciones',
@@ -22,8 +23,8 @@ export class InscripcionesComponent {
       lastName: 'Perez',
       curso: 'Angular',
       clase: 'A255',
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: new Date().toISOString(),
+      endDate: new Date().toISOString(),
     },
 
     {
@@ -32,8 +33,8 @@ export class InscripcionesComponent {
       lastName: 'Hernandez',
       curso: 'Programación Web',
       clase: 'B284',
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: new Date().toISOString(),
+      endDate: new Date().toISOString(),
     },
 
     {
@@ -42,12 +43,12 @@ export class InscripcionesComponent {
       lastName: 'Abba',
       curso: 'ReactJs',
       clase: 'C475',
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: new Date().toISOString(),
+      endDate: new Date().toISOString(),
     },
   ];
 
-  constructor(private matDialog: MatDialog) {}
+  constructor(private matDialog: MatDialog, private incripcionesService: InscripcionesService) {}
 
   openDialog(): void {
     this.matDialog.open(DialogoComponent).afterClosed().subscribe({

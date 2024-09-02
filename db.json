@@ -1,59 +1,63 @@
 {
-    "users": [
-        {
-            "id": "A382",
-            "firstName": "Helena",
-            "lastName": "Costas",
-            "email": "mailparaadmin@email.com",
-            "password": "02468",
-            "token": "sjhgd15",
-            "rol": "ADMIN"
-        },
+  "users": [
+    {
+      "id": "A382",
+      "firstName": "Helena",
+      "lastName": "Costas",
+      "email": "mailparaadmin@email.com",
+      "password": "02468",
+      "token": "sjhgd15",
+      "rol": "ADMIN"
+    },
 
-        {
-            "id": "B382",
-            "firstName": "Tamara",
-            "lastName": "Arevalos",
-            "email": "estoesun@email.com",
-            "password": "123456",
-            "token": "ejtus87",
-            "rol": "USUARIO"
-        }   
-    ],
+    {
+      "id": "B382",
+      "firstName": "Tamara",
+      "lastName": "Arevalos",
+      "email": "estoesun@email.com",
+      "password": "123456",
+      "token": "ejtus87",
+      "rol": "USUARIO"
+    }   
+  ],
 
-    "courses": [
-        {
-            "id": "DJHN",
-            "nombre": "Angular",
-            "price": 15000
-        },
+  "courses": [
+    {
+      "id": "DJHN",
+      "nombre": "Angular",
+      "price": 15000
+    },
 
     {
       "id": "JAHS",
       "nombre": "ReactJS",
       "price": 15000
     },
+
     {
       "id": "LASO",
       "nombre": "Programación Web",
       "price": 20000
     },
+
     {
       "id": "FHNH",
       "nombre": "Photoshop",
       "price": 22000
     },
+
     {
       "id": "ERPO",
       "nombre": "Marketing Digital",
       "price": 30000
     },
+
     {
       "id": "3c7b",
       "nombre": "Programación Fullstack",
       "price": 30000
     }
-    ],
+  ],
 
   "students": [
     {
@@ -88,5 +92,19 @@
       "finishedCourses": 3,
       "studying": "-"
     }
+  ],
+
+  "enrollments": [
+    {
+      "id": 1,
+      "name": "Ana",
+      "lastName": "Perez",
+      "curso": "Angular",
+      "clase": "A255",
+      "startDate": "",
+      "endDate": ""
+    },
+
+    {}
   ]
 }

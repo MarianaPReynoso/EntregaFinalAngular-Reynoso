@@ -1,15 +1,93 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CursosDisponibles } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoCursoComponent } from './components/dialogo-curso/dialogo-curso.component';
 import { generarId } from '../../shared/utils';
 import { CursosService } from '../../../core/services/cursos.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
   styleUrl: './cursos.component.scss'
 })
+
+// export class CursosComponent implements OnInit{
+//   courses: CursosDisponibles[] = [];
+//   loading = false;
+//   displayedColumns = ['id', 'name', 'price', 'actions'];
+//   courseForm: FormGroup;
+
+//   editingCourse: CursosDisponibles | null = null;
+
+//   constructor(
+//     private fb: FormBuilder,
+//     private cursosService: CursosService,
+//   ) {
+//     this.courseForm = this.fb.group({
+//       name: [null, [Validators.required]],
+//       price: [null, [Validators.required]],
+//     });
+//   }
+
+//   ngOnInit(): void {
+//     this.loadCourses();
+//   }
+
+//   loadCourses() {
+//     this.loading = true;
+//     this.cursosService.obtenerCursos().subscribe({
+//       next: (coursesFromDB) => {
+//       this.courses = coursesFromDB;
+//     },
+//     error: () => {},
+//     complete: () => {
+//       this.loading = false;
+//     }, 
+//     });
+//   }
+
+//   abrirDialog(): void {
+//     if (this.courseForm.invalid) {
+//       alert('El form es invalido');
+//     } else {
+//       if (!!this.editingCourse) {
+//         this.cursosService
+//           .editarCursotById(this.editingCourse.id, this.courseForm.value)
+//           .pipe(
+//             tap(() => {
+//               this.loadCourses();
+//               this.editingCourse = null;
+//             })
+//           )
+//           .subscribe();
+//       } else {
+//         this.cursosService
+//           .addCurso(this.courseForm.value)
+//           .pipe(tap(() => this.loadCourses()))
+//           .subscribe();
+//       }
+
+//       this.courseForm.reset();
+//     }
+//   }
+
+//   deleteCurso(id: string) {
+//     if (confirm('Esta seguro?')) {
+//       this.cursosService
+//         .borrarCursoById(id)
+//         .pipe(tap(() => this.loadCourses()))
+//         .subscribe();
+//     }
+//   }
+
+//   editCurso(editingCourse: CursosDisponibles) {
+//     this.editingCourse = editingCourse;
+
+//     this.courseForm.patchValue(editingCourse);
+//   }
+// }
 
 export class CursosComponent {
   courseList = '';

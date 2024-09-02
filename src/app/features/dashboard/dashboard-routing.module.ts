@@ -10,11 +10,11 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./inicio/inicio.module').then((d) => d.InicioModule),
-    component: InicioComponent,
+    // component: InicioComponent,
   },
 
   {
-    path: 'courses',
+    path: 'cursos',
     loadChildren: () => import('./cursos/cursos.module').then((d) => d.CursosModule),
     component: CursosComponent,
   },

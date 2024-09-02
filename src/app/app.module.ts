@@ -7,10 +7,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, StoreModule.forRoot({}, {})],
   providers: [
     provideAnimationsAsync(), 
     provideNativeDateAdapter(), 

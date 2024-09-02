@@ -4,15 +4,15 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'auth',
-    loadChildren: () => import('./features/auth/auth.module').then((archivo)=> archivo.AuthModule), 
-  },
+  // {
+  //   path: 'auth',
+  //   loadChildren: () => import('./features/auth/auth.module').then((archivo) => archivo.AuthModule), 
+  // },
 
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     loadChildren: () => import('./features/dashboard/dashboard.module').then((d) => d.DashboardModule),
   },
 

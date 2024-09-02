@@ -31,7 +31,7 @@ export class AuthService {
           const authUser = response[0];
           localStorage.setItem('token', authUser.token);
           this._authUser$.next(authUser);
-          this.router.navigate(['dashboard', 'home']);
+          this.router.navigate(['dashboard', 'inicio']);
         }
       }
     });

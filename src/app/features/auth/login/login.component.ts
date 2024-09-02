@@ -17,7 +17,7 @@ export class LoginComponent {
     private authService: AuthService,
   ) {
     this.loginForm = this.fb.group({
-      email: [null, Validators.required, Validators.email],
+      email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
       rol: [null, Validators.required]
     });
@@ -32,7 +32,7 @@ export class LoginComponent {
         email: this.loginForm.get('email')?.value,
         password: this.loginForm.get('password')?.value,
       }
-      this.authService.login(data);
+      this.authService.login(data);      
     }
   };
 

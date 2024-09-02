@@ -10,7 +10,7 @@ import { environment } from "../../../environments/environment";
 })
 
 export class CursosService {
-    private DATABASE = [ //CursosDisponibles[] = [
+    private DATABASE: CursosDisponibles[] = [
         {
             id: 'DJHN',
             nombre: 'Angular',
@@ -43,16 +43,8 @@ export class CursosService {
     ];
 
     constructor(private httpClient: HttpClient) {}
-    // constructor () {}
 
     obtenerCursos(): Observable<CursosDisponibles[]> {
-        // return new Observable((observer) => {
-        //     setTimeout(() => {
-        //         observer.next(this.DATABASE);
-        //         observer.complete();
-        //     }, 400)
-            
-        // });
         return this.httpClient.get<CursosDisponibles[]>(environment.apiUrl + '/courses')
     }
 

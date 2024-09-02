@@ -8,17 +8,29 @@
             <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
                 <mat-form-field appearance="outline" class="cajones">
                     <mat-label>Email</mat-label>
-                    <input formControlName="email" matInput>
+                    <input formControlName="email" matInput />
                     <mat-error>Este campo es requerido</mat-error>
                     <mat-icon matSuffix>email</mat-icon>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="cajones">
                     <mat-label>Contraseña</mat-label>
-                    <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'">
+                    <input
+                        formControlName="password"
+                        matInput
+                        [type]="hide() ? 'password' : 'text'"
+                    />
                     <mat-error>Este campo es requerido</mat-error>
-                    <button mat-icon-button matSuffix (click)="esconder($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
-                        <mat-icon matSuffix>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <button
+                        mat-icon-button
+                        matSuffix
+                        (click)="esconder($event)"
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide()"
+                    >
+                        <mat-icon matSuffix>{{
+                            hide() ? "visibility_off" : "visibility"
+                        }}</mat-icon>
                     </button>
                 </mat-form-field>
 

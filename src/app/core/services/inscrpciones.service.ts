@@ -15,6 +15,10 @@ export class InscripcionesService {
         return this.httpClient.get<Estudiantes[]>(environment.apiUrl + '/enrollments')
     } 
 
+    editEnroll(id: number, update: Partial<Estudiantes>) {
+        return this.httpClient.put(environment.apiUrl + '/enrollments' + id, update, {})
+    }
+
     deleteEnroll(id: number){
         return this.httpClient.delete(environment.apiUrl + '/enrollments' + id);
     }

@@ -48,7 +48,10 @@ export class InscripcionesComponent {
     },
   ];
 
-  constructor(private matDialog: MatDialog, private incripcionesService: InscripcionesService) {}
+  constructor(
+    private matDialog: MatDialog, 
+    private incripcionesService: InscripcionesService
+  ) {}
 
   openDialog(): void {
     this.matDialog.open(DialogoComponent).afterClosed().subscribe({
@@ -66,7 +69,12 @@ export class InscripcionesComponent {
     this.matDialog.open(DialogoComponent, {data: editarAlumno}).afterClosed().subscribe({
       next: (value) => {
         if(!!value) {
-          this.dataSource = this.dataSource.map((el) => el.id === editarAlumno.id ? {...value, id:editarAlumno.id} : el);
+          // this.dataSource = this.dataSource.map((el) => el.id === editarAlumno.id ? {...value, id:editarAlumno.id} : el);
+          this.incripcionesService.editEnroll(editarAlumno.id, value).subscribe({
+            next: (inscripciones) => {
+              // this.dataSource = {...inscripciones};
+            }
+          })
         }
       }
     });

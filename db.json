@@ -98,13 +98,31 @@
     {
       "id": 1,
       "name": "Ana",
-      "lastName": "Perez",
+      "lastName": "Perez EDITADO",
       "curso": "Angular",
       "clase": "A255",
       "startDate": "",
       "endDate": ""
     },
 
-    {}
+    {
+      "id": 2,
+      "name": "Mateo",
+      "lastName": "Hernandez",
+      "curso": "Programación Web",
+      "clase": "B284",
+      "startDate": "",
+      "endDate": ""
+    },
+
+    {
+      "id": 3,
+      "name": "Jorgelina",
+      "lastName": "Abba",
+      "curso": "ReactJs",
+      "clase": "C475",
+      "startDate": "",
+      "endDate": ""
+    }
   ]
 }

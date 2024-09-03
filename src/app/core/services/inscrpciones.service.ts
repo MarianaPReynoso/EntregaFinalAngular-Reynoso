@@ -12,8 +12,12 @@ export class InscripcionesService {
     constructor (private httpClient: HttpClient) {}
 
     getStudents(): Observable<Estudiantes[]> {
-        return this.httpClient.get<Estudiantes[]>(environment.apiUrl + '/enrollments')
+        return this.httpClient.get<Estudiantes[]>(environment.apiUrl + '/enrollments');
     } 
+
+    createEnrol(student: Estudiantes) {
+        return this.httpClient.post(environment.apiUrl + '/enrollments', student);
+    }
 
     editEnroll(id: number, update: Partial<Estudiantes>) {
         return this.httpClient.put(environment.apiUrl + '/enrollments' + id, update, {})

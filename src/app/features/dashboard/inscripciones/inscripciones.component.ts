@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Estudiantes } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoComponent } from './components/dialogo/dialogo.component';
 import { generarClase, generarId } from '../../shared/utils';
 import { MiniDialogoComponent } from './components/mini-dialogo/mini-dialogo.component';
 import { InscripcionesService } from '../../../core/services/inscrpciones.service';
+import { FormGroup } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-inscripciones',
@@ -14,6 +16,7 @@ import { InscripcionesService } from '../../../core/services/inscrpciones.servic
 
 export class InscripcionesComponent {
   listaAlumnos = '';
+  loading = false;
 
   displayedColumns: string[] = ['id', 'name', 'curso', 'clase', 'startDate', 'endDate', 'actions'];
   dataSource: Estudiantes[] = [
@@ -50,7 +53,7 @@ export class InscripcionesComponent {
 
   constructor(
     private matDialog: MatDialog, 
-    private incripcionesService: InscripcionesService
+    private incripcionesService: InscripcionesService,
   ) {}
 
   openDialog(): void {
@@ -60,7 +63,12 @@ export class InscripcionesComponent {
 
         value['id'] = generarId(2);
         value['clase'] = generarClase(4);
-        this.dataSource = [...this.dataSource, value]; 
+        this.incripcionesService.createEnrol(value).subscribe({
+          next: (inscripciones) => {
+            this.dataSource = [...inscripciones];
+          }
+        })
+        // this.dataSource = [...this.dataSource, value]; 
       },
     });
   }
@@ -72,7 +80,7 @@ export class InscripcionesComponent {
           // this.dataSource = this.dataSource.map((el) => el.id === editarAlumno.id ? {...value, id:editarAlumno.id} : el);
           this.incripcionesService.editEnroll(editarAlumno.id, value).subscribe({
             next: (inscripciones) => {
-              // this.dataSource = {...inscripciones};
+              this.dataSource = [...inscripciones];
             }
           })
         }
